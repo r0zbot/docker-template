@@ -5,4 +5,4 @@ My template run.sh and interact.sh to be used in docker development containers
 
 Just paste this:
 
-`git clone --depth=1 https://github.com/r0zbot/docker-template.git temprepo && mv temprepo/* . && rm -rf temprepo`
+`git clone --depth=1 https://github.com/r0zbot/docker-template.git temprepo && mv temprepo/!(LICENSE|README.md) . && rm -rf temprepo`
