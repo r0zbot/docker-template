@@ -1,10 +1,20 @@
-version: '2'
+version: "3"
 
 services:
-  db:
-    build: .
-    volumes: 
-      - ./pgdata:/var/lib/postgresql/data
+  CONNAME:
+    container_name: CONNAME
+    # image: example/test:${TEST_VERSION}
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile-Mine
+    user: "1002:1002"
+    # restart: unless-stoppedcat 
+    # env_file: .env
+    environment:
+      PUID: 1002
+      PGID: 1002
+    volumes:
       - ./data:/data
-    #environment:
-      #POSTGRES_PASSWORD: example
+      - /mnt/media/Comum/Musicas:/music:ro
+    ports:
+      - "5000:80"
