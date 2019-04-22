@@ -32,7 +32,8 @@ if [ $? != 0 ]; then
                 read -n1000 -r -p 'Holding...' key ;\
             fi \
         " \; \
-    split-window -b "./interact.sh" \; \
+    split-window -b "./interact_db.sh" \; \
+    split-window -b "./interact_web.sh" \; \
     $attach 
     eval $catcmd
 else
@@ -40,7 +41,8 @@ else
     # if its in daemon mode
     tty -s
     if [[ $? -eq 1 ]]; then
-        docker stop koel
+        docker stop $sessionname
+        docker stop "$sessionname"_db
         sleep 6
         $0 $@
     else

@@ -7,14 +7,25 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile-Mine
-    user: "1002:1002"
-    # restart: unless-stoppedcat 
+    # user: "1002:1002"
+    # restart: unless-stopped 
     # env_file: .env
-    environment:
-      PUID: 1002
-      PGID: 1002
+    #environment:
+    #  PUID: 1002
+    #  PGID: 1002
     volumes:
       - ./data:/data
       - /mnt/media/Comum/Musicas:/music:ro
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - "5000:80"
+    links:
+      - CONNAME_db
+
+  CONNAME_db:
+    container_name: CONNAME_db
+    image: mariadb:10
+      - MYSQL_ROOT_PASSWORD=senha_visivel_no_github
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
