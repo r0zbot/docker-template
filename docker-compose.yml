@@ -25,6 +25,7 @@ services:
   CONNAME_db:
     container_name: CONNAME_db
     image: mariadb:10
+    environment:
       - MYSQL_ROOT_PASSWORD=senha_visivel_no_github
     volumes:
       - ./data/mysql:/var/lib/mysql
