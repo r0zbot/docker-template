@@ -2,7 +2,7 @@
 
 read -p "Container/tmux session name: " sessionname
 
-sed -i "s/CONNAME/$sessionname/" docker-compose.yml run.sh interact.sh service.service
+sed -i "s/CONNAME/$sessionname/" docker-compose.yml run.sh interact_web.sh interact_db.sh service.service
 
 sed -i "s@DIRPATH@$(pwd)@" service.service
 
