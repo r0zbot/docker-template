@@ -40,7 +40,7 @@ else
     # if its in daemon mode
     tty -s
     if [[ $? -eq 1 ]]; then
-        docker stop koel
+        docker stop $CONNAME
         sleep 6
         $0 $@
     else
